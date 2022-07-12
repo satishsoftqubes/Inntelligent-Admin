@@ -3,8 +3,7 @@ import { Form, FormControl, InputGroup } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import LoginButtonIcon from "../../../src/assets/Images/Icons/LoginButtonIcon.svg";
-import LoginKeyIcon from "../../../src/assets/Images/Icons/LoginKeyIcon.svg";
+// import LoginKeyIcon from "../../../src/assets/Images/Icons/LoginKeyIcon.svg";
 import LoginUserIcon from "../../../src/assets/Images/Icons/LoginUserIcon.svg";
 import { Login } from "../../services/LoginServices";
 
@@ -65,28 +64,15 @@ function AuthLogin() {
   return (
     <>
       <div className="login-title">
-        Sign in to
-        <span className="d-block">
-          your account <span className="three-dots">...</span>
-        </span>
+        <span className="d-block">Login</span>
       </div>
-      <p className="login-description">
-        Specific-Measureable-Action Plan Driven-Realistic-TIme Oriented Customer Relationship
-        Management System, built by hoteliers for hoteliers, offering organization, automation and
-        synchronization of all your sales offers via a cloud based platform.
-      </p>
       <Form>
-        <InputGroup className="mb-3">
-          <InputGroup.Text id="basic-addon1">
-            <span>
-              <img src={LoginUserIcon} alt="" width={24} height={24} />
-            </span>
-          </InputGroup.Text>
+        <InputGroup className="mb-4">
           <FormControl
             type="email"
-            placeholder="Username"
-            aria-label="Username"
-            name="userName"
+            placeholder="Enter User ID"
+            aria-label="Enter User ID"
+            name="Enter User ID"
             aria-describedby="basic-addon1"
             onChange={(e) =>
               setInput({
@@ -95,13 +81,18 @@ function AuthLogin() {
               })
             }
           />
+          <InputGroup.Text id="basic-addon1">
+            <span>
+              <img src={LoginUserIcon} alt="" width={24} height={24} />
+            </span>
+          </InputGroup.Text>
         </InputGroup>
         <InputGroup className="mb-3 position-relative">
-          <InputGroup.Text id="basic-addon1">
+          {/* <InputGroup.Text id="basic-addon1">
             <span>
               <img src={LoginKeyIcon} alt="" width={24} height={24} />
             </span>
-          </InputGroup.Text>
+          </InputGroup.Text> */}
           <FormControl
             onChange={(e) =>
               setInput({
@@ -109,10 +100,10 @@ function AuthLogin() {
                 [e.target.name]: e.target.value,
               })
             }
-            type={ShowPassword ? "text" : "password"}
-            name="password"
-            placeholder="Password"
-            aria-label="Password"
+            type={ShowPassword ? "text" : "Password"}
+            name="Enter Password"
+            placeholder="Enter Password"
+            aria-label="Enter Password"
             aria-describedby="basic-addon1"
             autoComplete="current-password"
           />
@@ -125,7 +116,7 @@ function AuthLogin() {
                 onClick={() => showPassword()}
                 onKeyDown={() => showPassword()}
               >
-                <i className="fa-solid fa-eye-slash"></i>
+                <i className="fa-regular fa-eye-slash"></i>
               </span>
             ) : (
               <span
@@ -134,17 +125,14 @@ function AuthLogin() {
                 onClick={() => showPassword()}
                 onKeyDown={() => showPassword()}
               >
-                <i className="fa-solid fa-eye"></i>
+                <i className="fa-regular fa-eye"></i>
               </span>
             )}
           </div>
         </InputGroup>
-        <Form.Group className="form-button d-flex justify-content-between">
+        <Form.Group className="form-button">
           {IsloginClick === false ? (
             <button onClick={loginClick} className="btn btn-primary" type="button">
-              <span className="me-3">
-                <img src={LoginButtonIcon} alt="" />
-              </span>
               Login
             </button>
           ) : (
@@ -156,8 +144,8 @@ function AuthLogin() {
               Login...
             </button>
           )}
-          <Link className="forgot-link d-flex align-items-center" to="/forgotPassword">
-            Forgot Password ?
+          <Link className="forgot-link" to="/forgotPassword">
+            Forgot Password?
           </Link>
         </Form.Group>
       </Form>
