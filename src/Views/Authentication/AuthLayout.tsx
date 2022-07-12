@@ -10,12 +10,12 @@ function AuthLayout() {
     <div className="login-page">
       <div className="container-fluid">
         <Row className="m-0">
-          <Col lg="6" className="p-0">
+          <Col md="6" className="p-0">
             <div className="left-col">
               <img src={LoginLeftImg} alt="login-left-img" />
             </div>
           </Col>
-          <Col lg="6" className="p-0">
+          <Col md="6" className="p-0">
             <div className="right-col d-flex justify-content-center h-100 w-100">
               <div className="login-section">
                 <div className="login-logo">
