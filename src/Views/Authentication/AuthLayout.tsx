@@ -1,5 +1,5 @@
 import { Col, Row } from "react-bootstrap";
-import { ReactComponent as LoginLogo } from "../../../src/assets/Images/LoginPage/login-logo.svg";
+import LoginLogo from "../../../src/assets/Images/LoginPage/login-logo.png";
 import LoginLeftImg from "../../../src/assets/Images/LoginPage/login-img.png";
 import AuthLogin from "./AuthLogin";
 import { ClientSelection } from "./ClientSelection";
@@ -19,7 +19,7 @@ function AuthLayout() {
             <div className="right-col d-flex justify-content-center h-100 w-100">
               <div className="login-section">
                 <div className="login-logo">
-                  <LoginLogo />
+                  <img src={LoginLogo} alt="login-logo" width="320" height="64" />
                 </div>
                 {window.location.pathname === "/" ? (
                   <AuthLogin />

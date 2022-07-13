@@ -175,16 +175,28 @@ code {
   z-index: 111;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+/* ----------------------------------------------- common media query ----------------------------------------------- */
+@media only screen and (min-width: 768px) and (max-width: 1399px) {
+  /* -----------------------------------------------  Login Page ----------------------------------------------- */
   .login-page {
     .left-col {
-      padding-right: 10px;
+      padding-right: 5%;
+      img {
+        max-width: 362px;
+      }
     }
     .right-col {
-      padding-left: 10px;
+      padding-left: 5%;
     }
     .login-section {
       padding: 20px;
+      max-width: 362px;
+    }
+    .login-logo {
+      img {
+        width: 300px;
+        height: 60px;
+      }
     }
     .login-title {
       font-size: 1.2rem;
@@ -205,10 +217,27 @@ code {
       line-height: 15px;
     }
   }
+  /* ----------------------------------------------- Login Page ----------------------------------------------- */
+}
+@media only screen and (min-width: 1400px) and (max-width: 1600px) {
+  /* -----------------------------------------------  Login Page ----------------------------------------------- */
+  .login-page {
+    .left-col {
+      padding-right: 50px;
+    }
+    .right-col {
+      padding-left: 50px;
+    }
+  }
+  /* -----------------------------------------------  Login Page ----------------------------------------------- */
+}
+/* ----------------------------------------------- common media query ----------------------------------------------- */
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
 }
 @media only screen and (min-width: 1024px) and (max-width: 1279px) {
 }
 @media only screen and (min-width: 1280px) and (max-width: 1399px) {
 }
-@media only screen and (min-width: 1400px) and (max-width: 1700px) {
+@media only screen and (min-width: 1400px) and (max-width: 1600px) {
 }

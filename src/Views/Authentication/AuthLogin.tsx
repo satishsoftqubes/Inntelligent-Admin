@@ -21,7 +21,7 @@ function AuthLogin() {
         <span className="d-block">Login</span>
       </div>
       <Form>
-        <InputGroup className="mb-2 mb-lg-4">
+        <InputGroup className="mb-3 mb-lg-4">
           <FormControl
             type="email"
             placeholder="Enter User ID"
@@ -35,7 +35,7 @@ function AuthLogin() {
             </span>
           </InputGroup.Text>
         </InputGroup>
-        <InputGroup className="mb-2 mb-lg-3 position-relative">
+        <InputGroup className="mb-3 mb-lg-4 position-relative">
           <FormControl
             type={ShowPassword ? "text" : "Password"}
             name="Enter Password"
