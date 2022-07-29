@@ -10,7 +10,6 @@ const WizardView: FC<WizardProps> = ({ steps, setSteps }) => {
 
   const handleNext = () => {
     if (steps[steps.length - 1].key === activeStep.key) {
-      // alert("You have completed all steps.");
       return;
     }
 

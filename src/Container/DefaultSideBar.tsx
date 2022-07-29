@@ -1,27 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from "react";
-import {
-  Menu,
-  MenuItem,
-  ProSidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SubMenu,
-} from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
-import { NavLink, useNavigate } from "react-router-dom";
-import { ReactComponent as AccountIcon } from "../assets/Images/Icons/sidebarIcons/accounts.svg";
-import { ReactComponent as ActivitiesIcon } from "../assets/Images/Icons/sidebarIcons/activities.svg";
-import { ReactComponent as CollapseIcon } from "../assets/Images/Icons/sidebarIcons/arrowRight.svg";
-import { ReactComponent as ContactsIcon } from "../assets/Images/Icons/sidebarIcons/contacts.svg";
-import { ReactComponent as DashboardIcon } from "../assets/Images/Icons/sidebarIcons/dashboard.svg";
-import { ReactComponent as MiscallaneousIcon } from "../assets/Images/Icons/sidebarIcons/miscallaneous.svg";
-import { ReactComponent as OpportunityIcon } from "../assets/Images/Icons/sidebarIcons/opportunity.svg";
-import { ReactComponent as ReportsIcon } from "../assets/Images/Icons/sidebarIcons/reports.svg";
-import { ReactComponent as SetupConfigurationIcon } from "../assets/Images/Icons/sidebarIcons/setup-configuration.svg";
-import { ReactComponent as SupportIcon } from "../assets/Images/Icons/sidebarIcons/supportIcon.svg";
-import { ReactComponent as SuspectsIcon } from "../assets/Images/Icons/sidebarIcons/suspects.svg";
+import { Link, useNavigate } from "react-router-dom";
+import logo from "../assets/Images/Icons/sidebarIcons/crmLogo.svg";
 
 function DefaultSidebar() {
   const [menuCollapse, setMenuCollapse] = useState(true);
@@ -63,18 +44,7 @@ function DefaultSidebar() {
     ],
     miscallaneous: ["/miscellaneous/uploadDocument", "/miscellaneous/calendar"],
     reports: ["/Reports"],
-    setup: [
-      "/SetupAndConfigurations/createNewClient",
-      "/SetupAndConfigurations/generalsetting",
-      "/SetupAndConfigurations/companyprofile",
-      "/SetupAndConfigurations/portfolios",
-      "/SetupAndConfigurations/hotels",
-      "/SetupAndConfigurations/user",
-      "/SetupAndConfigurations/userRole",
-      "/SetupAndConfigurations/accountRules",
-      "/SetupAndConfigurations/marketSegmentType",
-      "/SetupAndConfigurations/additionalSettings",
-    ],
+    setup: ["/SetupAndConfigurations/user", "/SetupAndConfigurations/userRole"],
   };
 
   const setActiveFun = () => {
@@ -108,7 +78,7 @@ function DefaultSidebar() {
 
   return (
     <>
-      <ProSidebar collapsed={menuCollapse}>
+      {/* <ProSidebar collapsed={menuCollapse}>
         <SidebarHeader>
           <div
             className="closemenu"
@@ -132,244 +102,6 @@ function DefaultSidebar() {
             >
               <MenuItem icon={<DashboardIcon />}>Dashboard</MenuItem>
             </NavLink>
-            <SubMenu
-              id="suspect"
-              className="main-menu-title"
-              icon={<SuspectsIcon />}
-              title="Suspects"
-            >
-              <NavLink
-                onClick={(e) => {
-                  navigate("/suspects");
-                  setActiveFun();
-                }}
-                to="/suspects"
-              >
-                <MenuItem>Suspect</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/suspect/open");
-                  setActiveFun();
-                }}
-                to="/suspect/open"
-              >
-                <MenuItem>Open</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/suspect/nonViable");
-                  setActiveFun();
-                }}
-                to="/suspect/nonViable"
-              >
-                <MenuItem>Not Viable</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/suspect/openActivities");
-                  setActiveFun();
-                }}
-                to="/suspect/openActivities"
-              >
-                <MenuItem>Open Activities</MenuItem>
-              </NavLink>
-            </SubMenu>
-            <SubMenu
-              id="accounts"
-              className="main-menu-title"
-              icon={<AccountIcon />}
-              title="Accounts"
-            >
-              <NavLink
-                onClick={(e) => {
-                  navigate("/account");
-                  setActiveFun();
-                }}
-                to="/account"
-              >
-                <MenuItem>Accounts</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/accounts/active");
-                  setActiveFun();
-                }}
-                to="/accounts/active"
-              >
-                <MenuItem>Active</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/accounts/inactive");
-                  setActiveFun();
-                }}
-                to="/accounts/inactive"
-              >
-                <MenuItem>Inactive</MenuItem>
-              </NavLink>
-            </SubMenu>
-            <NavLink
-              id="contacts"
-              to="/contact"
-              onClick={(e) => {
-                navigate("/contact");
-                setActiveFun();
-              }}
-            >
-              <MenuItem icon={<ContactsIcon />}>Contacts</MenuItem>
-            </NavLink>
-            <SubMenu
-              id="activities"
-              className="main-menu-title"
-              icon={<ActivitiesIcon />}
-              title="Activities"
-            >
-              <NavLink
-                onClick={(e) => {
-                  navigate("/activity/all");
-                  setActiveFun();
-                }}
-                to="/activity/all"
-              >
-                <MenuItem>All</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/activity/blitz");
-                  setActiveFun();
-                }}
-                to="/activity/blitz"
-              >
-                <MenuItem>Blitz</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/activity/clientVisit");
-                  setActiveFun();
-                }}
-                to="/activity/clientVisit"
-              >
-                <MenuItem>Client Visit</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/activity/email");
-                  setActiveFun();
-                }}
-                to="/activity/email"
-              >
-                <MenuItem>Email</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/activity/followUp");
-                  setActiveFun();
-                }}
-                to="/activity/followUp"
-              >
-                <MenuItem>Follow Up</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/activity/meeting");
-                  setActiveFun();
-                }}
-                to="/activity/meeting"
-              >
-                <MenuItem>Meeting</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/activity/networking");
-                  setActiveFun();
-                }}
-                to="/activity/networking"
-              >
-                <MenuItem>Networking</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/activity/phoneCall");
-                  setActiveFun();
-                }}
-                to="/activity/phoneCall"
-              >
-                <MenuItem>Phone Call</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/activity/siteVisit");
-                  setActiveFun();
-                }}
-                to="/activity/siteVisit"
-              >
-                <MenuItem>Site Visit</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/activity/teleMarketing");
-                  setActiveFun();
-                }}
-                to="/activity/teleMarketing"
-              >
-                <MenuItem>Telemarketing</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/activity/others");
-                  setActiveFun();
-                }}
-                to="/activity/others"
-              >
-                <MenuItem>Other</MenuItem>
-              </NavLink>
-            </SubMenu>
-
-            <SubMenu
-              id="opportunities"
-              className="main-menu-title"
-              icon={<OpportunityIcon />}
-              title="Opportunity"
-            >
-              <NavLink
-                onClick={(e) => {
-                  navigate("/opportunity/rfp");
-                  setActiveFun();
-                }}
-                to="/opportunity/rfp"
-              >
-                <MenuItem>RFP</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/opportunity/lnr");
-                  setActiveFun();
-                }}
-                to="/opportunity/lnr"
-              >
-                <MenuItem>LNR</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/opportunity/group");
-                  setActiveFun();
-                }}
-                to="/opportunity/group"
-              >
-                <MenuItem>Group</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/opportunity/meetingAndCatering");
-                  setActiveFun();
-                }}
-                to="/opportunity/meetingAndCatering"
-              >
-                <MenuItem>Meeting & Catering</MenuItem>
-              </NavLink>
-            </SubMenu>
-
             <SubMenu
               id="miscallaneous"
               className="main-menu-title"
@@ -395,68 +127,12 @@ function DefaultSidebar() {
                 <MenuItem>Calendar</MenuItem>
               </NavLink>
             </SubMenu>
-
-            <NavLink
-              to="/Reports"
-              onClick={(e) => {
-                navigate("/Reports");
-                setActiveFun();
-              }}
-              id="reports"
-            >
-              <MenuItem icon={<ReportsIcon />}>Reports</MenuItem>
-            </NavLink>
             <SubMenu
               id="setup"
               className="main-menu-title"
               icon={<SetupConfigurationIcon />}
               title="Setup & Configuration"
             >
-              <NavLink
-                onClick={(e) => {
-                  navigate("/SetupAndConfigurations/createNewClient");
-                  setActiveFun();
-                }}
-                to="/SetupAndConfigurations/createNewClient"
-              >
-                <MenuItem>Create New Client</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/SetupAndConfigurations/generalsetting");
-                  setActiveFun();
-                }}
-                to="/SetupAndConfigurations/generalsetting"
-              >
-                <MenuItem>General Settings</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/SetupAndConfigurations/companyprofile");
-                  setActiveFun();
-                }}
-                to="/SetupAndConfigurations/companyprofile"
-              >
-                <MenuItem>Company Profile</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/SetupAndConfigurations/portfolios");
-                  setActiveFun();
-                }}
-                to="/SetupAndConfigurations/portfolios"
-              >
-                <MenuItem>Portfolios</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/SetupAndConfigurations/hotels");
-                  setActiveFun();
-                }}
-                to="/SetupAndConfigurations/hotels"
-              >
-                <MenuItem>Hotels</MenuItem>
-              </NavLink>
               <SubMenu title="User Management">
                 <NavLink
                   onClick={(e) => {
@@ -477,31 +153,6 @@ function DefaultSidebar() {
                   <MenuItem>User Role</MenuItem>
                 </NavLink>
               </SubMenu>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/SetupAndConfigurations/accountRules");
-                  setActiveFun();
-                }}
-                to="/SetupAndConfigurations/accountRules"
-              >
-                <MenuItem>Account Rules</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/SetupAndConfigurations/marketSegmentType");
-                }}
-                to="/SetupAndConfigurations/marketSegmentType"
-              >
-                <MenuItem>Market Segment Type</MenuItem>
-              </NavLink>
-              <NavLink
-                onClick={(e) => {
-                  navigate("/SetupAndConfigurations/additionalSettings");
-                }}
-                to="/SetupAndConfigurations/additionalSettings"
-              >
-                <MenuItem>Additional Settings</MenuItem>
-              </NavLink>
             </SubMenu>
           </Menu>
         </SidebarContent>
@@ -510,7 +161,88 @@ function DefaultSidebar() {
             <SupportIcon />
           </div>
         </SidebarFooter>
-      </ProSidebar>
+      </ProSidebar> */}
+      <aside className="main-sidebar">
+        <div className="left-sidebar">
+          <div className="logo">
+            <img src={logo} alt="" />
+          </div>
+          <div className="second-panel-sidebar">
+            <ul className="list-group list-group-light">
+              <li className="list-group-item border-0">
+                <Link to="/home">
+                  <i className="fa-light fa-gauge-simple-high"></i>
+                  <span className="block-span">Dashboard</span>
+                </Link>
+              </li>
+              <li className="list-group-item border-0 active">
+                <Link to="/clint-list">
+                  <i className="fa-light fa-user-group"> </i>
+                  <span className="block-span">Client List</span>
+                </Link>
+              </li>
+              <li className="list-group-item border-0 ">
+                <Link to="#">
+                  <i className="fa-light fa-copy"></i>
+                  <span className="block-span">Portfolio</span>
+                </Link>
+              </li>
+              <li className="list-group-item border-0">
+                <Link to="#">
+                  <i className="fa-light fa-building"></i>
+                  <span className="block-span">Properties</span>
+                </Link>
+              </li>
+              <li className="list-group-item border-0">
+                <Link to="#">
+                  <i className="fa-light fa-circle-dollar"></i>
+                  <span className="block-span">Subscription</span>
+                </Link>
+              </li>
+              <li className="list-group-item border-0">
+                <Link to="#">
+                  <i className="fa-light fa-file-import"></i>
+                  <span className="block-span">Import</span>
+                </Link>
+                <ul className="Import-list">
+                  <li>
+                    <Link to="#">Accounts</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Contacts</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Activities</Link>
+                  </li>
+                  <li>
+                    <Link to="#">Suspects</Link>
+                  </li>
+                </ul>
+              </li>
+              <li className="list-group-item border-0">
+                <Link to="#">
+                  <i className="fa-light fa-user-gear"></i>
+                  <span className="block-span">User Setup</span>
+                </Link>
+                <ul className="user-class-add">
+                  <li>
+                    <Link to="#">User</Link>
+                  </li>
+                  <li>
+                    <Link to="#">User Role</Link>
+                  </li>
+                </ul>
+              </li>
+              <li className="list-group-item border-0">
+                <Link to="#">
+                  <i className="fa-light fa-gear"></i>
+                  <span className="block-span">Additional Settings</span>
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </aside>
     </>
   );
 }

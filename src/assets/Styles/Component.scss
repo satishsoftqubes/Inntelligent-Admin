@@ -39,10 +39,6 @@ label {
     color: var(--prospect-color);
     background-color: var(--prospect-background-color);
   }
-  &.grey-label {
-    color: white;
-    background-color: grey;
-  }
 }
 
 .dashboard-blue-card.card {
@@ -116,7 +112,6 @@ label {
         line-height: 1.5;
         font-weight: 500;
         font-size: 1.25rem;
-        color: #000;
       }
     }
   }
@@ -237,7 +232,7 @@ ul.tab-component.nav-tabs {
     font-size: 2.5rem;
   }
   .dashboard-blue-card.card p {
-    font-size: 1rem;
+    font-size: 1.26rem;
   }
   .pageHeader {
     font-size: 1.22rem;
@@ -290,13 +285,13 @@ ul.tab-component.nav-tabs {
     .accordion-header {
       button {
         padding: 0.625rem 1.25rem;
-        background: var(--table-heading-row);
+        background: #dce1ee;
         border-radius: 5px;
         box-shadow: none;
         font-weight: 600;
         font-size: 0.875rem;
         line-height: 1.33;
-        color: var(--font-color);
+        color: #1c1c1c;
 
         &:not(.collapsed)::after {
           background: url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27 fill=%27%23212529%27%3e%3cpath fill-rule=%27evenodd%27 d=%27M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z%27/%3e%3c/svg%3e");
@@ -305,7 +300,6 @@ ul.tab-component.nav-tabs {
     }
   }
 }
-
 .sub-menu-active {
   position: relative;
 
@@ -379,10 +373,4 @@ ul.tab-component.nav-tabs {
     url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSINCiAgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4NCiAgPHBhdGggZD0iTTEyIDIxQzE2Ljk3MDYgMjEgMjEgMTYuOTcwNiAyMSAxMkMyMSA3LjAyOTQ0IDE2Ljk3MDYgMyAxMiAzQzcuMDI5NDQgMyAzIDcuMDI5NDQgMyAxMkMzIDE2Ljk3MDYgNy4wMjk0NCAyMSAxMiAyMVoiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+DQogIDxwYXRoIGQ9Ik0xNCAxMEwxMCAxNE0xMCAxMEwxNCAxNEwxMCAxMFoiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+DQo8L3N2Zz4NCg==")
     no-repeat center center/auto auto;
   opacity: 1;
-}
-
-[data-theme="dark"] {
-  .accordion-button::after {
-    filter: brightness(0) invert(1);
-  }
 }

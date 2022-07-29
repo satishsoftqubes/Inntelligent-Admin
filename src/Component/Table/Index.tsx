@@ -1,61 +1,10 @@
-import { matchSorter } from "match-sorter";
-import React from "react";
-
 import Table from "react-bootstrap/Table";
-import { useFilters, usePagination, useSortBy, useTable } from "react-table";
+import { usePagination, useSortBy, useTable } from "react-table";
 import BothSort from "../../assets/Images/Icons/bothSort.svg";
 import SortDown from "../../assets/Images/Icons/sortDown.svg";
 import SortUp from "../../assets/Images/Icons/sortUp.svg";
 
-// Define a default UI for filtering
-function DefaultColumnFilter({ column: { filterValue, preFilteredRows, setFilter } }) {
-  const count = preFilteredRows.length;
-
-  return (
-    <input
-      className="table-search form-control"
-      value={filterValue || ""}
-      onChange={(e) => {
-        setFilter(e.target.value || undefined); // Set undefined to remove the filter entirely
-      }}
-      placeholder={`Search ${count} records...`}
-    />
-  );
-}
-
-function fuzzyTextFilterFn(rows, id, filterValue) {
-  return matchSorter(rows, filterValue, { keys: [(row: any) => row.values[id]] });
-}
-// Let the table remove the filter if the string is empty
-fuzzyTextFilterFn.autoRemove = (val) => !val;
-
 function TableComponent({ columns, data }) {
-  const filterTypes = React.useMemo(
-    () => ({
-      // Add a new fuzzyTextFilterFn filter type.
-      fuzzyText: fuzzyTextFilterFn,
-      // Or, override the default text filter to use
-      // "startWith"
-      text: (rows, id, filterValue) => {
-        return rows.filter((row) => {
-          const rowValue = row.values[id];
-          return rowValue !== undefined
-            ? String(rowValue).toLowerCase().startsWith(String(filterValue).toLowerCase())
-            : true;
-        });
-      },
-    }),
-    []
-  );
-
-  const defaultColumn = React.useMemo(
-    () => ({
-      // Let's set up our default Filter UI
-      Filter: DefaultColumnFilter,
-    }),
-    []
-  );
-
   const {
     getTableProps,
     getTableBodyProps,
@@ -75,11 +24,8 @@ function TableComponent({ columns, data }) {
     {
       columns,
       data,
-      defaultColumn, // Be sure to pass the defaultColumn option
-      filterTypes,
       initialState: { pageIndex: 0 },
     },
-    useFilters,
     useSortBy,
     usePagination
   );
@@ -88,11 +34,6 @@ function TableComponent({ columns, data }) {
       <Table responsive className="table" {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup, keyTr) => (
-            //  <tr>
-            //         <th>
-            //           <div>{column.canFilter ? column.render("Filter") : null}</div>
-            //         </th>
-            //       </tr>
             <tr {...headerGroup.getHeaderGroupProps()} key={keyTr}>
               {headerGroup.headers.map((column, keyMain) => (
                 <th {...column.getHeaderProps(column.getSortByToggleProps())} key={keyMain}>
@@ -110,15 +51,6 @@ function TableComponent({ columns, data }) {
                       )}
                     </span>
                   </span>
-                </th>
-              ))}
-            </tr>
-          ))}
-          {headerGroups.map((headerGroup, keyTr) => (
-            <tr {...headerGroup.getHeaderGroupProps()} key={keyTr}>
-              {headerGroup.headers.map((column, keyMain) => (
-                <th key={keyMain}>
-                  <div>{column.canFilter ? column.render("Filter") : null}</div>
                 </th>
               ))}
             </tr>
@@ -144,7 +76,10 @@ function TableComponent({ columns, data }) {
       <div className="pagination">
         <div>
           <span>
-            Page {pageIndex + 1} of {pageOptions.length}
+            Page
+            <strong>
+              {pageIndex + 1} of {pageOptions.length}
+            </strong>
           </span>
           <select
             value={pageSize}
@@ -160,14 +95,20 @@ function TableComponent({ columns, data }) {
           </select>
         </div>
 
-        <div className="d-flex">
-          <span className="d-flex align-items-center">
+        <div>
+          <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+            <i className="fa-solid fa-backward"></i>
+          </button>
+          <button onClick={() => previousPage()} disabled={!canPreviousPage}>
+            <i className="fa-solid fa-caret-left"></i>
+          </button>
+          <span>
             {/* Go to page:{
               ' '} */}
-            <span className="page-num">Page no.</span>
             <input
               type="number"
               defaultValue={pageIndex + 1}
+              placeholder="Go to page"
               pattern="^[0-9]"
               min="1"
               step="1"
@@ -178,13 +119,6 @@ function TableComponent({ columns, data }) {
               style={{ width: "100px" }}
             />
           </span>
-          <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
-            <i className="fa-solid fa-backward"></i>
-          </button>
-          <button onClick={() => previousPage()} disabled={!canPreviousPage}>
-            <i className="fa-solid fa-caret-left"></i>
-          </button>
-
           <button onClick={() => nextPage()} disabled={!canNextPage}>
             <i className="fa-solid fa-caret-right"></i>
           </button>

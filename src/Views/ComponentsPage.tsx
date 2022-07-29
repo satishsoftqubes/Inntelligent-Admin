@@ -18,8 +18,6 @@ import TabsView from "../Component/Tabs/Index";
 import VerticalTabs from "../Component/VerticalTabs/Index";
 import WizardView from "../Component/Wizard/Index";
 
-// import Loader from "./Common/loader";
-
 interface modelObj {
   numberData: number;
   cardHeader: any;
@@ -140,6 +138,17 @@ function ComponentPage() {
   );
   const mainTableData = [
     {
+      code: <Form.Control type="search" className="table-search" />,
+      accountName: <Form.Control type="search" className="table-search" />,
+      owner: <Form.Control type="search" className="table-search" />,
+      status: <Form.Control type="search" className="table-search" />,
+      top: "",
+      target: "",
+      growth: "",
+      anticipatedRevenue: <Form.Control type="search" className="table-search" />,
+      lastActivity: <Form.Control type="search" className="table-search" />,
+    },
+    {
       code: "SH71738",
       accountName: "Wells High School SHILO INN SHILO",
       owner: "Cami Pollack",
@@ -177,7 +186,7 @@ function ComponentPage() {
     {
       key: "1",
       accordianTitle: "Account Information",
-      accordianContent: "2",
+      accordianContent: "<Home />",
     },
     {
       key: "2",

@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 // const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  entry: path.resolve(__dirname, "..", "./src/Index.tsx"),
+  entry: path.resolve(__dirname, "..", "./src/index.tsx"),
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
     fallback: {
@@ -46,11 +46,17 @@ module.exports = {
       {
         test: /\.(woff(2)?|eot|ttf|otf|)$/,
         type: "asset/inline",
+        generator: {
+          filename: "Assets/Fonts/[hash][ext][query]",
+        },
       },
       {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
         use: ["@svgr/webpack", "url-loader"],
+        generator: {
+          filename: "Assets/Svgs/[hash][ext][query]",
+        },
       },
     ],
   },

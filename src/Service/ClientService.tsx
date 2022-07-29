@@ -1,12 +1,12 @@
 import axios from "axios";
-import { AppConfigData } from "./CommonServices";
+import { AppConfigData } from "./CommonService";
 
-export const getProperty = async (ReqData, accessToken) => {
+export const getClientSelection = async (accessToken) => {
   try {
     const response = await axios({
       method: "POST",
-      url: AppConfigData.APIBasePath + "propertymanagement/api/Property/PropertyList",
-      data: ReqData,
+      url: AppConfigData.APIBasePath + "AdminPanel/api/Clients/GetClientsList",
+      data: "",
       headers: {
         "Content-Type": "application/json",
         Authorization: "bearer " + accessToken,
